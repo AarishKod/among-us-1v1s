@@ -16,10 +16,10 @@ font = pygame.font.SysFont('comicSans', 50)
 
 
 # assets import
-backGround = pygame.transform.scale(pygame.image.load(os.path.join('C:/Users/Aarish/Downloads', 'poop.png')), (width_x, height_x))
-character = pygame.image.load(os.path.join('C:/Users/Aarish/Downloads', 'meep2.png'))
-leg_piece = pygame.image.load(os.path.join('C:/Users/Aarish/Downloads', 'oof.jpg'))
-other_character = pygame.image.load(os.path.join('C:/Users/Aarish/Downloads', 'loop.png'))
+backGround = pygame.transform.scale(pygame.image.load(os.path.join('assets/images', 'poop.png')), (width_x, height_x))
+character = pygame.image.load(os.path.join('assets/images', 'meep2.png'))
+leg_piece = pygame.image.load(os.path.join('assets/images', 'oof.jpg'))
+other_character = pygame.image.load(os.path.join('assets/images', 'loop.png'))
 
 def renderMeNow():
     pressSpace = font.render(f'Press the space button', 1, (255, 255, 255))
