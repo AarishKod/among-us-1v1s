@@ -5,7 +5,7 @@ import sys
 
 pygame.font.init()
 
-width_x, height_x = 1440, 900
+width_x, height_x = 720, 450
 char_x, char_y = 50, 50
 nush_x, nush_y = 200, 40
 other_char_x, other_char_y = 800, 50
@@ -13,17 +13,18 @@ other_char_x, other_char_y = 800, 50
 WIN = pygame.display.set_mode((width_x, height_x))
 pygame.display.set_caption('Movement Simulator')
 font = pygame.font.SysFont('comicSans', 50)
+font1 = pygame.font.SysFont('comicSans', 10)
 
 
 # assets import
 backGround = pygame.transform.scale(pygame.image.load(os.path.join('assets/images', 'poop.png')), (width_x, height_x))
-character = pygame.image.load(os.path.join('assets/images', 'meep2.png'))
+character = pygame.transform.scale(pygame.image.load(os.path.join('assets/images', 'meep2.png')), (char_x, char_y))
 leg_piece = pygame.image.load(os.path.join('assets/images', 'oof.jpg'))
 other_character = pygame.image.load(os.path.join('assets/images', 'loop.png'))
 
 def renderMeNow():
     pressSpace = font.render(f'Press the space button', 1, (255, 255, 255))
-    name = font.render(f"I'm Sus", 1, (255, 0, 0))
+    name = font1.render(f"I'm Sus", 1, (255, 0, 0))
     WIN.blit(backGround, (0, 0))
     WIN.blit(pressSpace, (50, 10))
     WIN.blit(other_character, (other_char_x, other_char_y))
@@ -33,12 +34,8 @@ def renderMeNow():
     pygame.display.update()
 
 
-
-while True:
-    renderMeNow()
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            sys.exit()
+def movement():
+    global width_x, height_x, char_x, char_y, nush_x, nush_y, other_char_x, other_char_y
     if pygame.key.get_pressed()[pygame.K_UP] and pygame.key.get_pressed()[pygame.K_SPACE]:
         char_y -= 5
         nush_y -= 5
@@ -66,4 +63,12 @@ while True:
     if pygame.key.get_pressed()[pygame.K_u]:
         WIN.blit(leg_piece, (char_x, char_y))
         print('NUSH')
+
+
+while True:
+    renderMeNow()
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            sys.exit()
+    movement()
     
